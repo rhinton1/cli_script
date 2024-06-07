@@ -12,7 +12,7 @@ const Chrome = require('selenium-webdriver/chrome');
  *  MAIN PROGRAM
  */
 
-const SAML_LOGIN_PAGE_FOR_AWS = 'https://prod.adfs.federation.va.gov/adfs/ls/IdpInitiatedSignOn.aspx?loginToRp=urn:amazon:webservices:govcloud';
+const SAML_LOGIN_PAGE_FOR_AWS = '';
 
 program
   .name('aws-credentials-writer')
@@ -74,7 +74,7 @@ async function getAWSCredentials(samlAssertion, roleArn, principalArn) {
     SAMLAssertion: samlAssertion,
   });
 
-  const sts = new STSClient({ region: 'us-gov-west-1' });
+  const sts = new STSClient({ region: '' });
   const { Credentials: creds } = await sts.send(assumeRoleCommand);
 
   return creds
